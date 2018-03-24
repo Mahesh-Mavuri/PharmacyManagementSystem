@@ -56,3 +56,17 @@ body {
 {
 	font-size: 2em;
 }
+#main p
+{
+	font-weight : bold;
+	font-size: 18px;
+	text-align:center;
+}
+.glyphicon.glyphicon-user
+{
+	font-size : 1em;
+}
+.glyphicon.glyphicon-envelope
+{
+	font-size : 2.65em;
+}

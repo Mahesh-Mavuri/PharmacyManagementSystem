@@ -5,32 +5,47 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="-1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="css/admin_dashboard.css">
+<link rel="stylesheet" href="css/dashboard.css">
 <title>Pharmacy Management System</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/admin_dashboard.js"></script>
+<script type="text/javascript" src="js/dashboard.js"></script>
 </head>
 <body>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">Home</a>
+  <a href="admin_Dashboard.jsp?role=admin">Home</a>
   <a href="#">Operators</a>
   <a href="#">Inventory</a>
   <a href="#">Reports</a>
   <a href="#">Suppliers</a>
-  <a href="#">Profile</a>
-  <a href="#">Logout</a>
+  
 </div>
 	<div id="main">
 
 		<span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776;
-			Pharmacy Management System </span>  <a href="#" id="icons"> <span
-			class="glyphicon glyphicon-user"></span>
-		</a><a href="#" id="icons"> <span class="glyphicon glyphicon-envelope"></span>
+			Pharmacy Management System</span> <a href="#" id="icons"> <span
+			class="glyphicon glyphicon-envelope"></span>
 		</a>
+		<div class="dropdown" id="icons">
+			<button
+				class="btn btn-primary dropdown-toggle glyphicon glyphicon-user"
+				type="button" data-toggle="dropdown">
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li><a href="#">View Profile</a></li>
+				<li><a href="#">Change Password</a></li>
+				<li><a href="#">Logout</a></li>
+				
 
+			</ul>
+			
+		</div>
+		<p>Welcome <%=request.getParameter("role") %></p>
 	</div>
 <div class="container">
   
@@ -47,38 +62,38 @@
       <div class="item active">
         <img src="images/1.jpg" alt="images/2.jpg" style="width:100%;">
         <div class="carousel-caption">
-          <h3>Los Angeles</h3>
-          <p>LA is always so much fun!</p>
+          <h3>Medicine is not only a science; it is also an art. It does not consist of compounding pills and plasters; it deals with the very processes of life, which must be understood before they may be guided.</h3>
+          <p> - Paracelsus</p>
         </div>
       </div>
 
       <div class="item">
         <img src="images/2.jpg" alt="images/3.jpg" style="width:100%;">
         <div class="carousel-caption">
-          <h3>Chicago</h3>
-          <p>Thank you, Chicago!</p>
+          <h3>One of the biggest challenges to medicine is the incorporation of information technology in our practices.</h3>
+          <p>- Samuel Wilson</p>
         </div>
       </div>
     
      <div class="item">
         <img src="images/3.jpg" alt="images/4.jpg" style="width:100%;">
         <div class="carousel-caption">
-          <h3>Chicago</h3>
-          <p>Thank you, Chicago!</p>
+          <h3>Medicine heals doubts as well as diseases.</h3>
+          <p>- Karl Marx</p>
         </div>
       </div>
        <div class="item">
-        <img src="images/4.jpg" alt="images/0.jpg" style="width:100%;">
+        <img src="images/4.jpg" alt="images/5.jpg" style="width:100%;">
         <div class="carousel-caption">
-          <h3>Chicago</h3>
-          <p>Thank you, Chicago!</p>
+          <h3>Wherever the art of medicine is loved, there is also a love of humanity.</h3>
+          <p>- Hippocrates</p>
         </div>
       </div>
       <div class="item">
-        <img src="images/2.jpg" alt="images/2.jpg" style="width:100%;">
+        <img src="images/5.jpg" alt="images/1.jpg" style="width:100%;">
         <div class="carousel-caption">
-          <h3>New York</h3>
-          <p>We love the Big Apple!</p>
+          <h3>Medicine is the restoration of discordant elements; sickness is the discord of the elements infused into the living body.</h3>
+          <p>- Leonardo da Vinci</p>
         </div>
       </div>
   
