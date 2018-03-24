@@ -1,7 +1,7 @@
 @charset "ISO-8859-1";
 
 .container {
-	background-color:#eff5f5;
+	background-color:#d9d9d9;
 	position: fixed;
 	top: 30%;
 	left: 30%;
@@ -14,9 +14,9 @@
 	padding:5px;
 	margin:5px;
 }
-.html {
+.html 
+{
 	box-sizing: border-box;
-	
 }
 html
 {

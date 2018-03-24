@@ -78,14 +78,14 @@
 			if (role) {
 				if (oda.validateUser()) {
 					session.setAttribute("name", username);
-					response.sendRedirect("admin_Dashboard.jsp");
+					response.sendRedirect("admin_Dashboard.jsp?role=admin");
 				} else {
 					out.print("<script>wrongCredentials();</script>");
 					}
 			} else {
 				if (oda.validateUser()) {
 					session.setAttribute("name", username);
-					response.sendRedirect("operator_Dashboard.jsp");
+					response.sendRedirect("operator_Dashboard.jsp?role=operator");
 				} else {
 					out.print("<script>wrongCredentials();</script>");
 				}
