@@ -39,7 +39,7 @@
 			<ul class="dropdown-menu">
 				<li><a href="#">View Profile</a></li>
 				<li><a href="#">Change Password</a></li>
-				<li><a href="#">Logout</a></li>
+				<li><a href="#">Logout</form></li>
 				
 
 			</ul>
