@@ -1,0 +1,47 @@
+@charset "ISO-8859-1";
+
+.container {
+	background-color:#eff5f5;
+	position: fixed;
+	top: 30%;
+	left: 30%;
+	align: center;
+	width: 40%; 
+	
+}
+.btn.btn-primary
+{
+	padding:5px;
+	margin:5px;
+}
+.html {
+	box-sizing: border-box;
+	
+}
+html
+{
+	background-color:#ffffff;
+}
+h3
+{
+	text-align: center;
+}
+.input-group
+{
+	align:center;
+}
+.dropdown
+{
+	float:right;
+	padding: 5px;
+}
+.alert.alert-danger
+{
+	display:none;
+	
+}
+
+.alert.alert-success
+{
+	display:none;
+}
