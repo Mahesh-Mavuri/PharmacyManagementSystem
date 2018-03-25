@@ -1,6 +1,8 @@
 package com.dao.login;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,11 +19,13 @@ public class logout extends HttpServlet {
   
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.setContentType("text/html");  
+        PrintWriter out=response.getWriter();  
+        
 		 HttpSession session=request.getSession();  
-		 session.removeAttribute("username");
+		 session.removeAttribute("name");
          session.invalidate(); 
+         out.print("you are successfully logged out");
          response.sendRedirect("index.jsp");
 	}
 

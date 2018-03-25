@@ -15,6 +15,14 @@
 <script type="text/javascript" src="js/dashboard.js"></script>
 </head>
 <body>
+<%
+session = request.getSession();
+if((session.getAttribute("name"))==null)
+{
+	response.sendRedirect("index.jsp");
+}
+
+%>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="operator_Dashboard.jsp?role=operator">Home</a>
@@ -32,7 +40,7 @@
 				<ul class="dropdown-menu">
 					<li><a href="#">View Profile</a></li>
 					<li><a href="#">Change Password</a></li>
-					<li><a href="#">Logout</a></li>
+					<li><a href="logout">Logout</a></li>
 				</ul>
 			</div>
 <p>Welcome <%=request.getParameter("role") %></p>
