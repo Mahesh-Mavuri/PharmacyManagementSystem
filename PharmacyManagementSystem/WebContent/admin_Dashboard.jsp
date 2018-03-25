@@ -26,10 +26,10 @@ if((session.getAttribute("name"))==null)
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="admin_Dashboard.jsp?role=admin">Home</a>
-  <a href="#">Operators</a>
-  <a href="#">Inventory</a>
-  <a href="#">Reports</a>
-  <a href="#">Suppliers</a>
+  <a href="admin_Operators.jsp?role=admin">Operators</a>
+  <a href="admin_Inventory.jsp?role=admin">Inventory</a>
+  <a href="admin_Reports.jsp?role=admin">Reports</a>
+  <a href="admin_Suppliers.jsp?role=admin">Suppliers</a>
   
 </div>
 	<div id="main">
