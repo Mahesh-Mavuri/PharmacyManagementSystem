@@ -27,7 +27,7 @@ if((session.getAttribute("name"))==null)
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="operator_Dashboard.jsp?role=operator">Home</a>
   <a href="operator_POS.jsp?role=operator">POS</a>
-  <a href="operator_Notifyadmin.jsp?role=operator">Notify Admin</a>
+  <a href="operator_Notifyadmin.jsp?role=operator">Notify Admini</a>
   </div>
 	<div id="main">
 		<span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776;
