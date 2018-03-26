@@ -55,7 +55,7 @@ if((session.getAttribute("name"))==null)
 		</div>
 		<p>Welcome <%=request.getParameter("role") %><p>
 	</div>
-<div class="container-fluid">
+<div class="container">
   
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
