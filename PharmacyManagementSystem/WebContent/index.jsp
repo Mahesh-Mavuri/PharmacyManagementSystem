@@ -54,7 +54,7 @@
 					<a class="dropdown-item" onclick="operatorLogin()" href="#">Operator</a>
 				</div>
 			</div>
-			<br><br>
+			<br><br><br>
 			<div class="alert alert-danger alert-dismissible" id="wrong">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 				<strong>Wrong Credentials</strong> 

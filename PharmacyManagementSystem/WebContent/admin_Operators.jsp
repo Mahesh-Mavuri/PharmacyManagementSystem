@@ -9,10 +9,12 @@
 <meta http-equiv="Expires" content="-1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/admin_Operators.css">
 <title>Pharmacy Management System</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/dashboard.js"></script>
+<script type="text/javascript" src="js/admin_Operators.js"></script>
 </head>
 <body>
 <%
@@ -55,6 +57,39 @@ if((session.getAttribute("name"))==null)
 		</div>
 		<p>Welcome <%=request.getParameter("role") %><p>
 	</div>
+<div class="container" style="border:2px solid red;">
+		<button
+			onclick="document.getElementById('id01').style.display='block'"
+			style="width: auto;">Add Operator</button>
+		<div id="id02" class="modal">
+			<form class="modal-content animate" action="" method="post">
+					<div class="container">
+					<label for="uname"><b>Username</b></label> <input type="text"
+						placeholder="Enter Username" name="uname" required>
+					<button type="submit">Submit</button>
+					<button type="button"
+						onclick="document.getElementById('id01').style.display='none'"
+						class="cancelbtn">Cancel</button>
+				</div>
+			</form>
+		</div>
+		<button
+			onclick="document.getElementById('id01').style.display='block'"
+			style="width: auto;">Remove Operator</button>
+		<div id="id01" class="modal">
+			<form class="modal-content animate" action="" method="post">
+					<div class="container">
+					<label for="uname"><b>Username</b></label> <input type="text"
+						placeholder="Enter Username" name="uname" required>
+					<button type="submit">Submit</button>
+					<button type="button"
+						onclick="document.getElementById('id01').style.display='none'"
+						class="cancelbtn">Cancel</button>
+				</div>
+			</form>
+		</div>
+		<p> List of operators available</p>
+</div>
 
 </body>
 </html>

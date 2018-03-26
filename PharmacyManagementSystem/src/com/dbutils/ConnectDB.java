@@ -30,7 +30,7 @@ public class ConnectDB {
 		        } catch (SQLException ex) {
 		            throw new RuntimeException("Error connecting to the database", ex);
 		        } catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
+
 					e.printStackTrace();
 				}
 				return conn;

@@ -21,7 +21,7 @@ public class DBOperation {
 	
 	
 	
-	public ResultSet selectFromTable(String tableName,ArrayList<String> selectParamterList)
+	public ResultSet selectFromTable(String tableName,ArrayList<String> selectParamterList) throws SQLException
 	{
 		
 		ResultSet result=null;
@@ -54,6 +54,10 @@ public class DBOperation {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		finally
+		{
+			con.close();
 		}
 		return result;
 	}
