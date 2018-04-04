@@ -1,0 +1,267 @@
+-- MySQL dump 10.13  Distrib 5.7.21, for Win64 (x86_64)
+--
+-- Host: localhost    Database: pharma_master
+-- ------------------------------------------------------
+-- Server version	5.7.21-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `admin` (
+  `admin_id` int(11) NOT NULL AUTO_INCREMENT,
+  `admin_name` varchar(50) NOT NULL,
+  `admin_username` varchar(50) NOT NULL,
+  `admin_password` varchar(50) NOT NULL,
+  `admin_email` varchar(50) NOT NULL,
+  `admin_phone` varchar(15) NOT NULL,
+  PRIMARY KEY (`admin_id`),
+  UNIQUE KEY `admin_email` (`admin_email`),
+  UNIQUE KEY `admin_phone` (`admin_phone`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admin`
+--
+
+LOCK TABLES `admin` WRITE;
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+INSERT INTO `admin` VALUES (1,'mahesh','admin','admin','mavurimahesh1995@gmail.com','8179338226');
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bill`
+--
+
+DROP TABLE IF EXISTS `bill`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bill` (
+  `transaction_id` int(11) NOT NULL AUTO_INCREMENT,
+  `transaction_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `customer_id` int(11) NOT NULL,
+  `operator_id` int(11) NOT NULL,
+  `mode of payment` varchar(20) NOT NULL DEFAULT 'Cash',
+  `bill_total` float NOT NULL,
+  `prescription_id` int(11) NOT NULL,
+  PRIMARY KEY (`transaction_id`),
+  KEY `bill_fk0` (`customer_id`),
+  KEY `bill_fk1` (`operator_id`),
+  KEY `bill_fk2` (`prescription_id`),
+  CONSTRAINT `bill_fk0` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`),
+  CONSTRAINT `bill_fk1` FOREIGN KEY (`operator_id`) REFERENCES `operator` (`operator_id`),
+  CONSTRAINT `bill_fk2` FOREIGN KEY (`prescription_id`) REFERENCES `prescription` (`prescription_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bill`
+--
+
+LOCK TABLES `bill` WRITE;
+/*!40000 ALTER TABLE `bill` DISABLE KEYS */;
+INSERT INTO `bill` VALUES (1,'2018-03-13 17:47:32',1,2,'Cash',123,2),(2,'2018-03-13 17:47:32',2,1,'Card',458,1),(3,'2018-03-13 17:48:33',3,1,'Cash',487,1);
+/*!40000 ALTER TABLE `bill` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `customer`
+--
+
+DROP TABLE IF EXISTS `customer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `customer` (
+  `customer_id` int(11) NOT NULL AUTO_INCREMENT,
+  `customer_name` varchar(50) NOT NULL,
+  `customer_email` varchar(50) NOT NULL,
+  `customer_phone` varchar(15) NOT NULL,
+  PRIMARY KEY (`customer_id`),
+  UNIQUE KEY `customer_email` (`customer_email`),
+  UNIQUE KEY `customer_phone` (`customer_phone`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customer`
+--
+
+LOCK TABLES `customer` WRITE;
+/*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+INSERT INTO `customer` VALUES (1,'karthik','karthik@gmail.com','8475963245'),(2,'raghav','raghav@gmail.com','7985462426'),(3,'madhav','madhav@gmail.com','7458963245');
+/*!40000 ALTER TABLE `customer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `operator`
+--
+
+DROP TABLE IF EXISTS `operator`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `operator` (
+  `operator_id` int(11) NOT NULL AUTO_INCREMENT,
+  `operator_username` varchar(20) NOT NULL,
+  `operator_name` varchar(50) NOT NULL,
+  `operator_password` varchar(50) NOT NULL,
+  `operator_doj` date NOT NULL,
+  `operator_status` tinyint(1) NOT NULL DEFAULT '1',
+  `operator_branch` varchar(50) NOT NULL,
+  `operator_phone` varchar(15) NOT NULL,
+  `operator_email` varchar(45) NOT NULL,
+  PRIMARY KEY (`operator_id`),
+  UNIQUE KEY `operator_phone` (`operator_phone`),
+  UNIQUE KEY `operator_username_UNIQUE` (`operator_username`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `operator`
+--
+
+LOCK TABLES `operator` WRITE;
+/*!40000 ALTER TABLE `operator` DISABLE KEYS */;
+INSERT INTO `operator` VALUES (1,'rohit24','rohit','admin','2018-03-13',1,'madhapur','9611247548','rohitparab1995@gmail.com'),(2,'deepak20','deepak','admin','2018-03-13',1,'cybertowers','7406967153','jackroid6@gmail.com');
+/*!40000 ALTER TABLE `operator` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `prescription`
+--
+
+DROP TABLE IF EXISTS `prescription`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `prescription` (
+  `prescription_id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
+  `doctor_name` varchar(50) NOT NULL,
+  `prescription_date` date NOT NULL,
+  `product_quantity` int(11) NOT NULL,
+  PRIMARY KEY (`prescription_id`,`product_id`),
+  KEY `prescription_fk0` (`product_id`),
+  CONSTRAINT `prescription_fk0` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `prescription`
+--
+
+LOCK TABLES `prescription` WRITE;
+/*!40000 ALTER TABLE `prescription` DISABLE KEYS */;
+INSERT INTO `prescription` VALUES (1,1,'SUDHAKAR','2018-03-13',25),(1,2,'SUDHAKAR','2018-03-13',15),(1,3,'SUDHAKAR','2018-03-13',10),(2,6,'varun','2018-02-28',2);
+/*!40000 ALTER TABLE `prescription` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `product`
+--
+
+DROP TABLE IF EXISTS `product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `product` (
+  `product_id` int(11) NOT NULL AUTO_INCREMENT,
+  `supplier_id` int(11) NOT NULL,
+  `product_name` varchar(50) NOT NULL,
+  `product_type` varchar(50) NOT NULL,
+  `product_price` float NOT NULL,
+  PRIMARY KEY (`product_id`),
+  KEY `product_fk0` (`supplier_id`),
+  CONSTRAINT `product_fk0` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`supplier_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product`
+--
+
+LOCK TABLES `product` WRITE;
+/*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` VALUES (1,1,'RAMIPRES-H ','Tablets',15),(2,1,'AXALIN Expectorant','Syrup',95),(3,2,'Acebrophylline','Tablets',41),(4,2,'paracetomol','Tablets',5),(5,3,'crocin','Tablets',2),(6,3,'insulin','Injection',142);
+/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `product_expiry`
+--
+
+DROP TABLE IF EXISTS `product_expiry`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `product_expiry` (
+  `product_id` int(11) NOT NULL,
+  `batch_id` varchar(20) NOT NULL,
+  `product_expirydate` date NOT NULL,
+  `product_quantity` int(11) NOT NULL,
+  PRIMARY KEY (`product_id`,`batch_id`),
+  UNIQUE KEY `batch_id` (`batch_id`),
+  CONSTRAINT `product_expiry_fk0` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product_expiry`
+--
+
+LOCK TABLES `product_expiry` WRITE;
+/*!40000 ALTER TABLE `product_expiry` DISABLE KEYS */;
+INSERT INTO `product_expiry` VALUES (1,'1','2018-12-31',154),(1,'2','2020-12-31',45),(2,'3','2018-06-15',78),(3,'6','2018-12-13',15),(4,'4','2019-09-08',412),(4,'5','2018-12-31',85);
+/*!40000 ALTER TABLE `product_expiry` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `supplier`
+--
+
+DROP TABLE IF EXISTS `supplier`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `supplier` (
+  `supplier_id` int(11) NOT NULL AUTO_INCREMENT,
+  `supplier_company` varchar(50) NOT NULL,
+  `supplier_email` varchar(50) NOT NULL,
+  `supplier_phone` varchar(15) NOT NULL,
+  PRIMARY KEY (`supplier_id`),
+  UNIQUE KEY `supplier_email` (`supplier_email`),
+  UNIQUE KEY `supplier_phone` (`supplier_phone`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `supplier`
+--
+
+LOCK TABLES `supplier` WRITE;
+/*!40000 ALTER TABLE `supplier` DISABLE KEYS */;
+INSERT INTO `supplier` VALUES (1,'cipla','cipla@gmail.com','8574963215'),(2,'glenmark','glenmark@gmail.com','7946186942'),(3,'mannkind','mannkind@gmail.com','7948514872');
+/*!40000 ALTER TABLE `supplier` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-03-16 15:59:31
