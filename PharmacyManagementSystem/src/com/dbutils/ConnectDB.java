@@ -14,7 +14,7 @@ public class ConnectDB {
 
 		   //  Database credentials
 		   static final String USER = "root";
-		   static final String PASS = "admin";
+		   static final String PASS = "root";
 		   /**
 		     * Get a connection to database
 		     * @return Connection object

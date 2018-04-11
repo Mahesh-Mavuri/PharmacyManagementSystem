@@ -8,15 +8,21 @@ public class Login implements ILogin{
 
 	public Login(Credentials user) {
 			this.user = user;
+			
+	}
+	@Override
+	public String toString() {
+		return "Login [user=" + user + "]";
 	}
 
-	
+
 	public boolean validateUser() {
 		boolean result = false;
 		String userName = user.getUserName();
 		String userPassword = user.getUserPassword();
 		boolean role=user.getRole();
 		try (Connection con = ConnectDB.getConnection()){
+			System.out.println(con);
 			String sqlQuery;
 			if(role)
 			{//role is true for admin

@@ -35,7 +35,7 @@
 			</div>
 			<div class="alert alert-success alert-dismissible" id="success1">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Please wait for 1-2 minutes</strong>
+				<strong>Sorry We can't send gmail</strong>
 			</div>
 			<div class="alert alert-danger alert-dismissible" id="wrong">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

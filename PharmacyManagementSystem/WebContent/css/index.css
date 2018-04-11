@@ -3,7 +3,16 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 
 .container {
-	background-color:#f2f3f4;
+	background-color:#becfea;
+	position: fixed;
+	top: 30%;
+	left: 30%;
+	align: center;
+	width: 40%; 
+	
+}
+#container {
+	background-color:#ced5e0;
 	position: fixed;
 	top: 30%;
 	left: 30%;

@@ -12,6 +12,7 @@ public class Credentials {
 		this.userName = userName;
 		this.userPassword = userPassword;
 		this.role = role;
+		System.out.println("Credentials file assessed");
 	}
 	public String getUserName() {
 		return userName;

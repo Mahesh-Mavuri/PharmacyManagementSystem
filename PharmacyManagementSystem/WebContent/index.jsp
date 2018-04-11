@@ -19,10 +19,10 @@
 <title>Pharmacy Management System</title>
 </head>
 <body>
-	<div class="container">
+	<div class="container" id="container">
 		<h3>Pharmacy Management System</h3>
 		<h5>Login Portal</h5>
-		<form id="login" method="post">
+		<form id="login" method="get">
 			<div class="input-group">
 				<span class="input-group-addon"><i
 					class="glyphicon glyphicon-user"></i></span> <input id="uname" type="text"
@@ -75,6 +75,7 @@
 			}
 			Credentials oc = new Credentials(username, password, role);
 			Login oda = new Login(oc);
+			System.out.println(oda);
 			if (role) {
 				if (oda.validateUser()) {
 					session.setAttribute("name", username);
