@@ -27,6 +27,7 @@ public class ConnectDB {
 		    		//STEP 2: Register and Load JDBC driver
 		    	      Class.forName("com.mysql.jdbc.Driver");
 		            conn = DriverManager.getConnection(DB_URL+dbName, USER, PASS);
+		            System.out.println("connected");
 		        } catch (SQLException ex) {
 		            throw new RuntimeException("Error connecting to the database", ex);
 		        } catch (ClassNotFoundException e) {

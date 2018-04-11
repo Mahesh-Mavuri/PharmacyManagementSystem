@@ -1,3 +1,5 @@
+<%@page import="com.dao.OperatorPOJO"%>
+<%@page import="com.dao.dashboardoperations.admin.AdminManageOperation"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -88,7 +90,40 @@ if((session.getAttribute("name"))==null)
 				</div>
 			</form>
 		</div>
-		<p> List of operators available</p>
+		<div class="container">
+  <h2>List of operators available</h2>
+		<div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Branch</th>
+        <th>Status</th>
+        <th>PhoneNumber</th>
+        </tr>
+    </thead>
+    <tbody>
+		<%
+		AdminManageOperation ty = new AdminManageOperation();
+		OperatorPOJO[] re = ty.getAllOperators();
+		int k=1;
+		for(int i=0;i< re.length ;i++)
+		{ %>
+		 <tr>
+		 <td><%=k++%></td>
+		   <td><%out.println(re[i].getOperatorName()); %></td>
+		   <td><%out.println(re[i].getOperatorBranch()); %></td>
+		   <td><%out.println(re[i].getOperatorStatus()); %></td>
+		   <td><%out.println(re[i].getOperatorPhone()); %></td>
+		   <td> <button type="button" class="btn btn-primary btn-xs">Remove</button></td> </tr>
+		   <% 
+		 }
+		%>
+		</tbody>
+		  </table>
+		  </div>
+		</div>
 </div>
 
 </body>

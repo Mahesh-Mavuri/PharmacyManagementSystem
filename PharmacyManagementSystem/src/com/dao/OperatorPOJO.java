@@ -21,7 +21,7 @@ public class OperatorPOJO {
 	
 	public OperatorPOJO(String operatorId, String operatorUsername, String operatorName, String operatorDoj,
 			String operatorStatus, String operatorBranch, String operatorEmail, String operatorPhone) {
-		super();
+		//super();
 		this.operatorId = operatorId;
 		this.operatorUsername = operatorUsername;
 		this.operatorName = operatorName;
@@ -38,7 +38,8 @@ public class OperatorPOJO {
 		return operatorId;
 	}
 	public void setOperatorId(String operatorId) {
-		this.operatorId = operatorId;
+		 this.operatorId = operatorId;
+		
 	}
 	
 	public String getOperatorUsername() {
