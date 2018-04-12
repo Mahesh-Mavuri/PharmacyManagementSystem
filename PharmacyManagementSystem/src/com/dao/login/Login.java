@@ -22,7 +22,7 @@ public class Login implements ILogin{
 		String userPassword = user.getUserPassword();
 		boolean role=user.getRole();
 		try (Connection con = ConnectDB.getConnection()){
-			System.out.println(con);
+			//System.out.println(con);
 			String sqlQuery;
 			if(role)
 			{//role is true for admin

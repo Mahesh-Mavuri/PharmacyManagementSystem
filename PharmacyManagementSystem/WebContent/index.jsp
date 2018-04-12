@@ -75,7 +75,7 @@
 			}
 			Credentials oc = new Credentials(username, password, role);
 			Login oda = new Login(oc);
-			System.out.println(oda);
+			//System.out.println(oda);
 			if (role) {
 				if (oda.validateUser()) {
 					session.setAttribute("name", username);
