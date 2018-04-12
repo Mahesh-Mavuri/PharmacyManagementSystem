@@ -20,12 +20,12 @@ public class AdminManageOperation implements IAdminManageOperation {
 			String sql = "select * from operator";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			ResultSet result = pstmt.executeQuery();
-			System.out.println(result);
+			//System.out.println(result);
 			//Get row count by pointing to last row
 			result.last();
 			//System.out.println(result.last());
 			int row = result.getRow();
-			System.out.print(row);
+			//System.out.print(row);
 			result.beforeFirst();
 			result.next();
 		

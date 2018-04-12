@@ -89,10 +89,10 @@ if((session.getAttribute("name"))==null)
 				</div>
 			</form>
 		</div>
-		<div class="container">
-  <h2>List of operators available</h2>
+		<div class="container" id="allOps">
+  <h2 >List of operators available</h2>
 		<div class="table-responsive">          
-  <table class="table">
+  <table class="table" >
     <thead>
       <tr>
         <th>#</th>
@@ -101,7 +101,8 @@ if((session.getAttribute("name"))==null)
         <th>PhoneNumber</th>
         </tr>
     </thead>
-    <tbody>
+     
+		  <tbody>
 		<%
 		AdminManageOperation ty = new AdminManageOperation();
 		OperatorPOJO[] re = ty.getAllOperators();
@@ -116,18 +117,19 @@ if((session.getAttribute("name"))==null)
 		   <td><%out.println(re[i].getOperatorBranch()); %></td>
 		   <td><%out.println(re[i].getOperatorPhone()); %></td>
 		  
-		   <td> <button type="button" class="btn btn-default btn-xs" onclick="removeOperator(this)">
-		   <span class="glyphicon glyphicon-trash"></span></button></td> </tr>
+		   <td><button type="button" name="remove" class="btn btn-default btn-xs"   <%
+		   
+		   %>
+		   onclick="removeOperator1(<%=re[i].getOperatorId()%>)">
+		 		   <span class="glyphicon glyphicon-trash"></span></button></td> </tr>
 		   <% 
 		 }
 		}
 		%>
-		</tbody>
-		  </table>
-		  
+		</tbody> 
+		</table>
 		  </div>
 		</div>
 </div>
-
 </body>
 </html>

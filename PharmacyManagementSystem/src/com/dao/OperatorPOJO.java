@@ -1,5 +1,11 @@
 package com.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import com.dbutils.ConnectDB;
+
 public class OperatorPOJO {
 	
 	private String operatorId;
@@ -63,8 +69,25 @@ public class OperatorPOJO {
 	public String getOperatorStatus() {
 		return operatorStatus;
 	}
-	public void setOperatorStatus(String operatorStatus) {
+	public void setOperatorStatus(String operatorStatus)
+	{
 		this.operatorStatus = operatorStatus;
+	}
+	public void setOperatorStatus(String operatorStatus, int number) throws SQLException {
+		/*if(operatorStatus.equals("0"))
+		{*/
+			try(Connection con = ConnectDB.getConnection())
+			{
+				System.out.println("connected");
+				String sqlQuery="UPDATE operator SET operator_status=0 WHERE operator_id=?";
+				PreparedStatement pstmt = con.prepareStatement(sqlQuery);
+				
+				pstmt.setInt(1,number);
+				int updated = pstmt.executeUpdate();
+				System.out.println("rows affected "+updated);
+			}
+		
+		
 	}
 	public String getOperatorBranch() {
 		return operatorBranch;
