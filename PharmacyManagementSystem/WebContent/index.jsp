@@ -22,7 +22,7 @@
 	<div class="container" id="container">
 		<h3>Pharmacy Management System</h3>
 		<h5>Login Portal</h5>
-		<form id="login" method="get">
+		<form id="login" method="post">
 			<div class="input-group">
 				<span class="input-group-addon"><i
 					class="glyphicon glyphicon-user"></i></span> <input id="uname" type="text"

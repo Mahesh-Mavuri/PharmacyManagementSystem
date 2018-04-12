@@ -63,21 +63,7 @@ if((session.getAttribute("name"))==null)
 		<button
 			onclick="document.getElementById('id01').style.display='block'"
 			style="width: auto;">Add Operator</button>
-		<div id="id02" class="modal">
-			<form class="modal-content animate" action="" method="post">
-					<div class="container">
-					<label for="uname"><b>Username</b></label> <input type="text"
-						placeholder="Enter Username" name="uname" required>
-					<button type="submit">Submit</button>
-					<button type="button"
-						onclick="document.getElementById('id01').style.display='none'"
-						class="cancelbtn">Cancel</button>
-				</div>
-			</form>
-		</div>
-		<button
-			onclick="document.getElementById('id01').style.display='block'"
-			style="width: auto;">Remove Operator</button>
+		
 		<div id="id01" class="modal">
 			<form class="modal-content animate" action="" method="post">
 					<div class="container">
@@ -90,6 +76,19 @@ if((session.getAttribute("name"))==null)
 				</div>
 			</form>
 		</div>
+		 <input type="hidden" id="re" value="0"></input>
+		<div id="id02" class="modal">
+			<form class="modal-content animate" action="" method="post">
+					<div class="container">
+					<label for="uname"><h2>Are You Sure?</h2></label>
+					<br>
+					<button type="submit">Yes</button>
+					<button type="button"
+						onclick="document.getElementById('id02').style.display='none'"
+						class="cancelbtn">No</button>
+				</div>
+			</form>
+		</div>
 		<div class="container">
   <h2>List of operators available</h2>
 		<div class="table-responsive">          
@@ -99,7 +98,6 @@ if((session.getAttribute("name"))==null)
         <th>#</th>
         <th>Name</th>
         <th>Branch</th>
-        <th>Status</th>
         <th>PhoneNumber</th>
         </tr>
     </thead>
@@ -109,19 +107,24 @@ if((session.getAttribute("name"))==null)
 		OperatorPOJO[] re = ty.getAllOperators();
 		int k=1;
 		for(int i=0;i< re.length ;i++)
-		{ %>
+		{ if(re[i].getOperatorStatus().equals("1"))
+		{
+		%>
 		 <tr>
 		 <td><%=k++%></td>
 		   <td><%out.println(re[i].getOperatorName()); %></td>
 		   <td><%out.println(re[i].getOperatorBranch()); %></td>
-		   <td><%out.println(re[i].getOperatorStatus()); %></td>
 		   <td><%out.println(re[i].getOperatorPhone()); %></td>
-		   <td> <button type="button" class="btn btn-primary btn-xs">Remove</button></td> </tr>
+		  
+		   <td> <button type="button" class="btn btn-default btn-xs" onclick="removeOperator(this)">
+		   <span class="glyphicon glyphicon-trash"></span></button></td> </tr>
 		   <% 
 		 }
+		}
 		%>
 		</tbody>
 		  </table>
+		  
 		  </div>
 		</div>
 </div>
