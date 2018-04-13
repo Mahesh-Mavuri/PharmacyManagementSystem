@@ -117,7 +117,7 @@ if((session.getAttribute("name"))==null)
 		   <td><%out.println(re[i].getOperatorBranch()); %></td>
 		   <td><%out.println(re[i].getOperatorPhone()); %></td>
 		  
-		   <td><button type="button" name="remove" class="btn btn-default btn-xs"   <%
+		   <td><button type="button" name="<%=re[i].getOperatorId()%>" class="btn btn-default btn-xs"   <%
 		   
 		   %>
 		   onclick="removeOperator1(<%=re[i].getOperatorId()%>)">

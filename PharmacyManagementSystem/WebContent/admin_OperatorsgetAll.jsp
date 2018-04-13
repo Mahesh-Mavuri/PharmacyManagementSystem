@@ -1,14 +1,10 @@
 <%@page import="com.dao.OperatorPOJO"%>
 <%@page import="com.dao.dashboardoperations.admin.AdminManageOperation"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
+
+
 <body>
+<script type="text/javascript" src="js/admin_Operators.js"></script>
+
 <div class="container" >
   <h2 >List of operators available</h2>
 		<div class="table-responsive">          
@@ -34,6 +30,9 @@
 			{
 				re[i].setOperatorStatus("0",Integer.parseInt(re[i].getOperatorId()));
 			}
+		}
+		for(int i=0;i< re.length ;i++)
+		{
 			if(re[i].getOperatorStatus().equals("1"))
 		{
 		
@@ -45,7 +44,8 @@
 		   <td><%out.println(re[i].getOperatorBranch()); %></td>
 		   <td><%out.println(re[i].getOperatorPhone()); %></td>
 		  
-		   <td> <button type="button" class="btn btn-default btn-xs">
+		   <td> <button type="button" name="<%=re[i].getOperatorId()%>" class="btn btn-default btn-xs"
+		   onclick="removeOperator1(<%=re[i].getOperatorId()%>)">
 		   <span class="glyphicon glyphicon-trash"></span></button></td> </tr>
 		   <% 
 		 }
