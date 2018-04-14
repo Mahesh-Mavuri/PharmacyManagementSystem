@@ -59,7 +59,7 @@ if((session.getAttribute("name"))==null)
 		</div>
 		<p>Welcome <%=request.getParameter("role") %><p>
 	</div>
-<div class="container" style="border:2px solid red;">
+<div class="container" style="border:2px solid red;" id="allOps1">
 		<button
 			onclick="document.getElementById('id01').style.display='block'"
 			style="width: auto;">Add Operator</button>
@@ -76,7 +76,7 @@ if((session.getAttribute("name"))==null)
 				</div>
 			</form>
 		</div>
-		 <input type="hidden" id="re" value="0"></input>
+		 
 		<div id="id02" class="modal">
 			<form class="modal-content animate" action="" method="post">
 					<div class="container">
@@ -89,7 +89,7 @@ if((session.getAttribute("name"))==null)
 				</div>
 			</form>
 		</div>
-		<div class="container" id="allOps">
+		<div class="container" >
   <h2 >List of operators available</h2>
 		<div class="table-responsive">          
   <table class="table" >
@@ -117,11 +117,9 @@ if((session.getAttribute("name"))==null)
 		   <td><%out.println(re[i].getOperatorBranch()); %></td>
 		   <td><%out.println(re[i].getOperatorPhone()); %></td>
 		  
-		   <td><button type="button" name="<%=re[i].getOperatorId()%>" class="btn btn-default btn-xs"   <%
-		   
-		   %>
+		   <td><button type="button" name="<%=re[i].getOperatorId()%>" class="btn btn-default btn-xs" 
 		   onclick="removeOperator1(<%=re[i].getOperatorId()%>)">
-		 		   <span class="glyphicon glyphicon-trash"></span></button></td> </tr>
+		 		   <span class="glyphicon glyphicon-remove-sign" style="color:red;border:none;padding:0;background:none;"></span></button></td> </tr>
 		   <% 
 		 }
 		}
