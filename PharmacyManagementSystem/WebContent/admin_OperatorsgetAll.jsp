@@ -28,18 +28,13 @@
 		int j= Integer.parseInt(request.getParameter("row"))-1;
 		for(int i=0;i< re.length ;i++)
 		{
-			if(i==j)
-			{
-				re[i].setOperatorStatus("0",Integer.parseInt(re[i].getOperatorId()));
-			}
-		}
-		for(int i=0;i< re.length ;i++)
-		{
 			if(re[i].getOperatorStatus().equals("1"))
 		{
 			if(i==j)
 			{
+				re[i].setOperatorStatus("0",Integer.parseInt(re[i].getOperatorId()));
 				continue;
+				
 			}
 		%>
 		
