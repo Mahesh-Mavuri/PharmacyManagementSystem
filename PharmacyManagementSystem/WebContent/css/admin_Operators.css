@@ -65,10 +65,7 @@ button:hover {
     border: 1px solid #888;
     width: 60%; /* Could be more or less, depending on screen size */
 }
-#id02 .modal-content
-{
-	width: 30%;
-}
+
 /* The Close Button (x) */
 .close {
     position: absolute;
