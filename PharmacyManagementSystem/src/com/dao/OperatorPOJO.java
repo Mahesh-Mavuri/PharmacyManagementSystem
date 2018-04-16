@@ -37,9 +37,7 @@ public class OperatorPOJO {
 		this.operatorEmail = operatorEmail;
 		this.operatorPhone = operatorPhone;
 	}
-
-
-
+	
 	public String getOperatorId() {
 		return operatorId;
 	}
@@ -54,12 +52,28 @@ public class OperatorPOJO {
 	public void setOperatorUsername(String operatorUsername) {
 		this.operatorUsername = operatorUsername;
 	}
+	
 	public String getOperatorName() {
 		return operatorName;
 	}
 	public void setOperatorName(String operatorName) {
 		this.operatorName = operatorName;
 	}
+	/*public void setOperatorName(String operatorName,int id) throws SQLException {
+		try(Connection con = ConnectDB.getConnection())
+		{
+			System.out.println("connected");
+			String sqlQuery="UPDATE operator SET operator_name=? WHERE operator_id=?";
+			PreparedStatement pstmt = con.prepareStatement(sqlQuery);
+			
+			pstmt.setString(1,operatorName);
+			pstmt.setInt(2,id);
+			int updated = pstmt.executeUpdate();
+			System.out.println("rows affected on"+updated);
+			this.operatorName = operatorName;
+		}
+		
+	}*/
 	public String getOperatorDoj() {
 		return operatorDoj;
 	}
@@ -73,7 +87,7 @@ public class OperatorPOJO {
 	{
 		this.operatorStatus = operatorStatus;
 	}
-	public void setOperatorStatus(String operatorStatus, int number) throws SQLException {
+	public void setOperatorStatus(String operatorStatus, int id) throws SQLException {
 		/*if(operatorStatus.equals("0"))
 		{*/
 			try(Connection con = ConnectDB.getConnection())
@@ -82,9 +96,10 @@ public class OperatorPOJO {
 				String sqlQuery="UPDATE operator SET operator_status=0 WHERE operator_id=?";
 				PreparedStatement pstmt = con.prepareStatement(sqlQuery);
 				
-				pstmt.setInt(1,number);
+				pstmt.setInt(1,id);
 				int updated = pstmt.executeUpdate();
-				System.out.println("rows affected "+updated);
+				System.out.println("rows affected os"+updated);
+				this.operatorStatus = operatorStatus;
 			}
 		
 		
@@ -95,20 +110,88 @@ public class OperatorPOJO {
 	public void setOperatorBranch(String operatorBranch) {
 		this.operatorBranch = operatorBranch;
 	}
+	/*public void setOperatorBranch(String operatorBranch,int id) throws SQLException {
+		try(Connection con = ConnectDB.getConnection())
+		{
+			System.out.println("connected");
+			String sqlQuery="UPDATE operator SET operator_branch=? WHERE operator_id=?";
+			PreparedStatement pstmt = con.prepareStatement(sqlQuery);
+			
+			pstmt.setString(1,operatorBranch);
+			pstmt.setInt(2,id);
+			int updated = pstmt.executeUpdate();
+			System.out.println("rows affected ob"+updated);
+			this.operatorBranch = operatorBranch;
+		}
+		
+	}*/
 	public String getOperatorEmail() {
 		return operatorEmail;
 	}
 	public void setOperatorEmail(String operatorEmail) {
 		this.operatorEmail = operatorEmail;
 	}
+	/*public void setOperatorEmail(String operatorEmail,int id) throws SQLException {
+		try(Connection con = ConnectDB.getConnection())
+		{
+			System.out.println("connected");
+			String sqlQuery="UPDATE operator SET operator_email=? WHERE operator_id=?";
+			PreparedStatement pstmt = con.prepareStatement(sqlQuery);
+			
+			pstmt.setString(1,operatorEmail);
+			pstmt.setInt(2,id);
+			int updated = pstmt.executeUpdate();
+			System.out.println("rows affected oe"+updated);
+			this.operatorEmail = operatorEmail;
+		}
+		
+	}*/
 	public String getOperatorPhone() {
 		return operatorPhone;
 	}
 	public void setOperatorPhone(String operatorPhone) {
 		this.operatorPhone = operatorPhone;
 	}
-
-
+	/*public void setOperatorPhone(String operatorPhone,int id) throws SQLException {
+		try(Connection con = ConnectDB.getConnection())
+		{
+			System.out.println("connected");
+			String sqlQuery="UPDATE operator SET operator_phone=? WHERE operator_id=?";
+			PreparedStatement pstmt = con.prepareStatement(sqlQuery);
+			
+			pstmt.setString(1,operatorPhone);
+			pstmt.setInt(2,id);
+			int updated = pstmt.executeUpdate();
+			System.out.println("rows affected op"+updated);
+			this.operatorPhone = operatorPhone;
+		}
+		
+	}
+*/
+	public void editOperator(String name, String branch, String phone,String email, String id1) throws SQLException
+	{
+		int id = Integer.parseInt(id1);
+		try(Connection con = ConnectDB.getConnection())
+		{
+			
+			System.out.println("connected");
+			String sqlQuery=" update operator set operator_name=?, operator_branch=?,  operator_phone=?, operator_email=? where operator_id=?";
+			PreparedStatement pstmt = con.prepareStatement(sqlQuery);
+			
+			pstmt.setString(1,name);
+			pstmt.setString(2,branch);
+			pstmt.setString(3,phone);
+			pstmt.setString(4,email);
+			pstmt.setInt(5,id);
+			int updated = pstmt.executeUpdate();
+			System.out.println("rows affected on"+updated);
+			this.operatorName=name;
+			this.operatorBranch=branch;
+			this.operatorPhone=phone;
+			this.operatorEmail=email;
+			this.operatorId=id1;
+		}
+	}
 
 	@Override
 	public String toString() {

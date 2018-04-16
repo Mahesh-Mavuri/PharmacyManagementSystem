@@ -25,20 +25,32 @@ function removeOperator1(i) {
 	  xhttp.open("GET", "admin_OperatorsgetAll.jsp?row="+i, true);
 	  xhttp.send();
 	}
-function editOperator()
-{
+function editOperator(id,name,branch,phone,email)
+{	
+	
 	var form=document.getElementById('editOp');
-	var oname=document.getElementByName('oname').getAttribute("value");
-	var obranch=document.getElementByName('obranch').getAttribute("value");
-	var ophone=document.getElementByName('ophone').getAttribute("value");
-	var oemail=document.getElementByName('oemail').getAttribute("value");
+	document.getElementById('oname').value=name;
+	document.getElementById('obranch').value=branch;
+	document.getElementById('ophone').value=phone;
+	document.getElementById('oemail').value=email;
+	document.getElementById('id03').style.display='block';
+	form.onsubmit = function(){
+	
+	//alert("form submitted");
+	var oname1=document.getElementById('oname').value;
+	var obranch1=document.getElementById('obranch').value;
+	var ophone1=document.getElementById('ophone').value;
+	var oemail1=document.getElementById('oemail').value;
+	//alert(oname1+" "+obranch1+" "+ophone1+" "+oemail1+" ");
+	
 	 var xhttp = new XMLHttpRequest();
 	  xhttp.onreadystatechange = function() {
-	    if (this.readyState == 4 && this.status == 200) {
+	   if (this.readyState == 4 && this.status == 200) {
 	      document.getElementById("allOps1").innerHTML = this.responseText;
-	      console.log(this.responseText);
-	    }
+	      console.log(this.responsetext);
+	   }
 	  };
-	  xhttp.open("GET", "admin_Operatoredit.jsp?oname="+oname&"obranch="+obranch&"ophone="+ophone&"oemail="+oemail, true);
+	  xhttp.open("GET", "admin_Operatoredit.jsp?oname="+oname1+"&obranch="+obranch1+"&ophone="+ophone1+"&oemail="+oemail1+"&row="+id, true);
 	  xhttp.send();
+}
 }

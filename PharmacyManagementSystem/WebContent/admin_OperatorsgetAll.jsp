@@ -43,7 +43,7 @@
 		   <td><%out.println(re[i].getOperatorEmail()); %></td>
 		   <td>
 		   <button type="button" name="#" class="btn btn-default btn-xs" style="color : green;border : none;padding : 0;background : none;"
-		   onclick="document.getElementById('id03').style.display='block'">
+		   onclick="editOperator('<%=re[i].getOperatorId()%>', '<%=re[i].getOperatorName()%>', '<%=re[i].getOperatorBranch()%>','<%=re[i].getOperatorPhone()%>', '<%=re[i].getOperatorEmail()%>')">
 		 		   <span class="glyphicon glyphicon-pencil" ></span></button>
 		    <button type="button" name="<%=re[i].getOperatorId()%>" class="btn btn-default btn-xs" style="color : red;border : none;padding : 0;background : none;"
 		   onclick="removeOperator1(<%=re[i].getOperatorId()%>)">
@@ -56,4 +56,3 @@
 		</table>
 		  </div>
 		</body>
-</html>
