@@ -41,10 +41,10 @@ function editOperator(id,name,branch,phone,email)
 		var obranch1=document.getElementById('obranch').value;
 		var ophone1=document.getElementById('ophone').value;
 		var oemail1=document.getElementById('oemail').value;
-		$("#id03").css("display","none");
+
 		$("#allOps1").load("admin_Operatoredit.jsp?oname="+oname1+"&obranch="+obranch1+"&ophone="+ophone1+"&oemail="+oemail1+"&row="+id);
 		
-		alert("Data Updated");   
+	alert("Data Updated");
 		
 	});
 	});
