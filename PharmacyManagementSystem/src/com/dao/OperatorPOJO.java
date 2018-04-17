@@ -184,7 +184,7 @@ public class OperatorPOJO {
 			pstmt.setString(4,email);
 			pstmt.setInt(5,id);
 			int updated = pstmt.executeUpdate();
-			System.out.println("rows affected on"+updated);
+			System.out.println("rows affected "+updated);
 			this.operatorName=name;
 			this.operatorBranch=branch;
 			this.operatorPhone=phone;

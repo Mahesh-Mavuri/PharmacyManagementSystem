@@ -100,7 +100,7 @@ if((session.getAttribute("name"))==null)
 		{ if(re[i].getOperatorStatus().equals("1"))
 		{	
 		%>
-		 <tr>
+		 <tr id="<%re[i].getOperatorId();%>">
 		 <td><%=k++%></td>
 		   <td><%out.println(re[i].getOperatorName()); %></td>
 		   <td><%out.println(re[i].getOperatorBranch()); %></td>

@@ -17,7 +17,8 @@ function removeOperator1(i) {
 	
 	  var xhttp = new XMLHttpRequest();
 	  xhttp.onreadystatechange = function() {
-	    if (this.readyState == 4 && this.status == 200) {
+		 
+		  if (this.readyState == 4 && this.status == 200) {
 	      document.getElementById("allOps1").innerHTML = this.responseText;
 	      console.log(this.responseText);
 	    }
@@ -35,8 +36,8 @@ function editOperator(id,name,branch,phone,email)
 	document.getElementById('oemail').value=email;
 	document.getElementById('id03').style.display='block';
 	form.onsubmit = function(){
-	
-	//alert("form submitted");
+		document.getElementById('id03').style.display='none';	
+
 	var oname1=document.getElementById('oname').value;
 	var obranch1=document.getElementById('obranch').value;
 	var ophone1=document.getElementById('ophone').value;
@@ -44,13 +45,19 @@ function editOperator(id,name,branch,phone,email)
 	//alert(oname1+" "+obranch1+" "+ophone1+" "+oemail1+" ");
 	
 	 var xhttp = new XMLHttpRequest();
+	 
 	  xhttp.onreadystatechange = function() {
+		 	
+	  
 	   if (this.readyState == 4 && this.status == 200) {
-	      document.getElementById("allOps1").innerHTML = this.responseText;
+		 
+	      document.getElementById("allOps1").innerHTML = this.responseText;  
 	      console.log(this.responsetext);
 	   }
 	  };
 	  xhttp.open("GET", "admin_Operatoredit.jsp?oname="+oname1+"&obranch="+obranch1+"&ophone="+ophone1+"&oemail="+oemail1+"&row="+id, true);
+	  
 	  xhttp.send();
+	  alert("data changed");
 }
 }
