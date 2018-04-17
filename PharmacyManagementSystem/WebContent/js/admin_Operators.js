@@ -35,7 +35,20 @@ function editOperator(id,name,branch,phone,email)
 	document.getElementById('ophone').value=phone;
 	document.getElementById('oemail').value=email;
 	document.getElementById('id03').style.display='block';
-	form.onsubmit = function(){
+	$(document).ready(function(){
+	$("#editOp").submit(function(){
+		var oname1=document.getElementById('oname').value;
+		var obranch1=document.getElementById('obranch').value;
+		var ophone1=document.getElementById('ophone').value;
+		var oemail1=document.getElementById('oemail').value;
+		$("#id03").css("display","none");
+		$("#allOps1").load("admin_Operatoredit.jsp?oname="+oname1+"&obranch="+obranch1+"&ophone="+ophone1+"&oemail="+oemail1+"&row="+id);
+		
+		alert("Data Updated");   
+		
+	});
+	});
+	/*form.onsubmit = function(){
 		document.getElementById('id03').style.display='none';	
 
 	var oname1=document.getElementById('oname').value;
@@ -59,5 +72,5 @@ function editOperator(id,name,branch,phone,email)
 	  
 	  xhttp.send();
 	  alert("data changed");
-}
+}*/
 }
