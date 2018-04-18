@@ -36,22 +36,54 @@ function editOperator(id,name,branch,phone,email)
 	document.getElementById('oemail').value=email;
 	document.getElementById('id03').style.display='block';
 	$(document).ready(function(){
-	$("#editOp").submit(function(){
+	$("#submit").on("click",function(event){
+		event.preventDefault();
 		var oname1=document.getElementById('oname').value;
 		var obranch1=document.getElementById('obranch').value;
 		var ophone1=document.getElementById('ophone').value;
 		var oemail1=document.getElementById('oemail').value;
-
-		$.ajax("admin_Operatoredit.jsp?oname="+oname1+"&obranch="+obranch1+"&ophone="+ophone1+"&oemail="+oemail1+"&row="+id,
-				{
+		document.getElementById('id03').style.display='none';
+		//alert(oname1+" "+obranch1+" "+ophone1+" "+oemail1+" ");
+		//oname="+oname1+"&obranch="+obranch1+"&ophone="+ophone1+"&oemail="+oemail1+
+		$.ajax({
+            url: "admin_Operatoredit.jsp?row="+id,
+            type: "POST",
+            data: { oname: oname1, obranch: obranch1, ophone : ophone1, oemail : oemail1},                   
+            success: function(data,status,xhr)
+                        {	$("#allOps1").html(data);
+                        //alert("status:"+status);
+                            console.log(data); 
+                            
+                        },
+                        error: function(jqXHR, exception) {
+                            if (jqXHR.status === 0) {
+                                alert('Not connect.\n Verify Network.');
+                            } else if (jqXHR.status == 404) {
+                                alert('Requested page not found. [404]');
+                            } else if (jqXHR.status == 500) {
+                                alert('Internal Server Error [500].');
+                            } else if (exception === 'parsererror') {
+                                alert('Requested JSON parse failed.');
+                            } else if (exception === 'timeout') {
+                                alert('Time out error.');
+                            } else if (exception === 'abort') {
+                                alert('Ajax request aborted.');
+                            } else {
+                                alert('Uncaught Error.\n' + jqXHR.responseText);
+                            }
+                        }
+        });
+		/*$.ajax({
+			url: 'admin_Operatoredit.jsp?oname='+oname1+'&obranch='+obranch1+'&ophone='+ophone1+'&oemail='+oemail1+'&row='+id,
+				
 				success: function(data,status,xhr){
-			
-			$("#allOps1").append(data);
-			//console.log(data);
+					 
+					 $("#allOps1").text(data);
+					 console.log(status);
 				}
-				});
+				});*/
 		
-	//alert("Data Updated");
+	
 		
 	});
 	});

@@ -139,7 +139,7 @@ if((session.getAttribute("name"))==null)
 					<label for="oemail"><b>Email</b></label> <input type="email" class="form-control" value=""
 						placeholder="Enter Email" name="oemail" id="oemail" required><br>
 						
-					<button type="submit" value="submit">Submit</button>
+					<button type="submit" value="submit" id="submit">Submit</button>
 					<button type="button"
 						onclick="document.getElementById('id03').style.display='none'"
 						class="cancelbtn">Cancel</button>
