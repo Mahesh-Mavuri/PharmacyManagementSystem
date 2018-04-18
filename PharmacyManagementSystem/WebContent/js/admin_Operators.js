@@ -54,7 +54,7 @@ function editOperator(id,name,branch,phone,email)
                         //alert("status:"+status);
                             console.log(data); 
                             
-                        },
+                        }/*,
                         error: function(jqXHR, exception) {
                             if (jqXHR.status === 0) {
                                 alert('Not connect.\n Verify Network.');
@@ -71,7 +71,7 @@ function editOperator(id,name,branch,phone,email)
                             } else {
                                 alert('Uncaught Error.\n' + jqXHR.responseText);
                             }
-                        }
+                        }*/
         });
 		/*$.ajax({
 			url: 'admin_Operatoredit.jsp?oname='+oname1+'&obranch='+obranch1+'&ophone='+ophone1+'&oemail='+oemail1+'&row='+id,
