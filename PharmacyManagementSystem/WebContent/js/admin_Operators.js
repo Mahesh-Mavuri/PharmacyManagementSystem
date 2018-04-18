@@ -42,9 +42,16 @@ function editOperator(id,name,branch,phone,email)
 		var ophone1=document.getElementById('ophone').value;
 		var oemail1=document.getElementById('oemail').value;
 
-		$("#allOps1").load("admin_Operatoredit.jsp?oname="+oname1+"&obranch="+obranch1+"&ophone="+ophone1+"&oemail="+oemail1+"&row="+id);
+		$.ajax("admin_Operatoredit.jsp?oname="+oname1+"&obranch="+obranch1+"&ophone="+ophone1+"&oemail="+oemail1+"&row="+id,
+				{
+				success: function(data,status,xhr){
+			
+			$("#allOps1").append(data);
+			//console.log(data);
+				}
+				});
 		
-	alert("Data Updated");
+	//alert("Data Updated");
 		
 	});
 	});
