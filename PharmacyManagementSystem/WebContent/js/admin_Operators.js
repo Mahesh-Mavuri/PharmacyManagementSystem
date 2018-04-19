@@ -29,7 +29,7 @@ function removeOperator(i) {
 function editOperator(id,name,branch,phone,email)
 {	
 	
-	var form=document.getElementById('editOp');
+	
 	document.getElementById('oname').value=name;
 	document.getElementById('obranch').value=branch;
 	document.getElementById('ophone').value=phone;
@@ -143,7 +143,7 @@ function userExists()
 }
 
 function addOperator()
-{	var form=document.getElementById('addOp');
+{	
 	//alert("hi");
 	document.getElementById('id01').style.display='block';
 	$(document).ready(function(){
