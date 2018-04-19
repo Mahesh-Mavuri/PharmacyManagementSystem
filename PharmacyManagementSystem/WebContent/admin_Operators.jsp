@@ -9,16 +9,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/admin_Operators.js"></script>
+<script type="text/javascript" src="js/dashboard.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/dashboard.css">
 <link rel="stylesheet" href="css/admin_Operators.css">
 <title>Pharmacy Management System</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/dashboard.js"></script>
-<script type="text/javascript" src="js/admin_Operators.js"></script>
+
+
 </head>
 <body>
+
 <%
 session = request.getSession();
 if((session.getAttribute("name"))==null)
@@ -61,15 +64,22 @@ if((session.getAttribute("name"))==null)
 	</div>
 <div class="container" >
 		<button
-			onclick="document.getElementById('id01').style.display='block'"
+			onclick="addOperator()"
 			style="width: auto;">Add Operator</button>
 		
 		<div id="id01" class="modal">
-			<form class="modal-content animate" action="" method="post">
-					<div class="container">
-					<label for="uname"><b>Username</b></label> <input type="text"
-						placeholder="Enter Username" name="uname" required>
-					<button type="submit">Submit</button>
+			<form class="modal-content animate" action="" id="addOp" method="post" style="padding:30px;width:30%;">
+					<div class="input-group">
+					<label for="uname"><b>Username</b></label> <input type="text" class="form-control"
+						placeholder="Enter Username" name="uname" id="uname" onblur="userExists()" required><br>
+					<div id="Invalid"></div>	
+					<label for="name"><b>Name</b></label> <input type="text" class="form-control"
+						placeholder="Enter Name" name="name" id="name" required><br>
+					<label for="uphone"><b>Phone</b></label> <input type="text" class="form-control"
+						placeholder="Enter Phone" name="uphone" id="uphone" required><br>
+					<label for="uemail"><b>Email</b></label> <input type="email" class="form-control"
+						placeholder="Enter Email" name="uemail" id="uemail" required><br>
+					<button type="submit" id="addOperator" name="addOperator" >Submit</button>
 					<button type="button"
 						onclick="document.getElementById('id01').style.display='none'"
 						class="cancelbtn">Cancel</button>
@@ -113,7 +123,7 @@ if((session.getAttribute("name"))==null)
 		 		   <span class="glyphicon glyphicon-pencil" ></span></button>
 		 		 
 		 	   <button type="button" name="<%=re[i].getOperatorId()%>" class="btn btn-default btn-xs" style="color : red;border : none;padding : 0;background : none;"
-		   onclick="removeOperator1(<%=re[i].getOperatorId()%>)">
+		   onclick="removeOperator(<%=re[i].getOperatorId()%>)">
 		 		   <span class="glyphicon glyphicon-remove-sign" ></span></button>
 		 		   </td> </tr>
 		 		   

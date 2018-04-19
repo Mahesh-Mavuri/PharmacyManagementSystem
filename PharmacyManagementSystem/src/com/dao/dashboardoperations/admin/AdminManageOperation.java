@@ -3,10 +3,9 @@ package com.dao.dashboardoperations.admin;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Arrays;
-import java.util.Iterator;
+import java.sql.SQLException;
 
-import com.dao.Credentials;
+
 import com.dao.OperatorPOJO;
 import com.dbutils.ConnectDB;
 
@@ -67,11 +66,34 @@ public class AdminManageOperation implements IAdminManageOperation {
 		return operatorList;
 	}
 
+	public boolean userexists(String username) throws SQLException
+	{
+		boolean flag=false;
+		String sqlQuery;
+		try(Connection con=ConnectDB.getConnection())
+		{
+			sqlQuery = "select operator_username from operator where operator_username=?";
+			PreparedStatement pstmt = con.prepareStatement(sqlQuery);
+			pstmt.setString(1,username);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next() )
+			{
+				//If row exit valid credentials
+				flag = true;
+			}
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+
+		return flag;
+	}
 
 	
 
 
-	public boolean addOperator(Credentials auth, OperatorPOJO operatorInfo) {
+	public boolean addOperator(String uname, String name, String phone,String email) {
 
 
 		boolean flag=false;
@@ -81,20 +103,16 @@ public class AdminManageOperation implements IAdminManageOperation {
 
 			// SQL statement for insert into operator table
 			String queryString="insert into operator("+
-					"operator_username,operator_name,operator_password,operator_doj,operator_status,operator_branch,operator_phone,operator_email)"
-					+"values(?,?,?,?,?,?,?,?)";
+					"operator_username,operator_name,operator_phone,operator_email)"
+					+"values(?,?,?,?)";
 			//creating prepare statement using insert queryString
 			PreparedStatement pstmt = con.prepareStatement(queryString);
 
 			// setting values to prepare statements;
-			pstmt.setString(1, auth.getUserName());
-			pstmt.setString(2, operatorInfo.getOperatorName());
-			pstmt.setString(3, auth.getUserPassword());
-			pstmt.setString(4, operatorInfo.getOperatorDoj());
-			pstmt.setString(5, operatorInfo.getOperatorStatus());
-			pstmt.setString(6, operatorInfo.getOperatorBranch());
-			pstmt.setString(7, operatorInfo.getOperatorPhone());
-			pstmt.setString(8, operatorInfo.getOperatorEmail());
+			pstmt.setString(1, uname);
+			pstmt.setString(2, name);
+			pstmt.setString(3, phone);
+			pstmt.setString(4, email);
 
 
 			// execute the query :Add new operator to table
@@ -102,6 +120,7 @@ public class AdminManageOperation implements IAdminManageOperation {
 
 			if(affected_row>0) {
 				flag = true;
+				System.out.println("database updated");
 			}
 
 		} catch (Exception e) {

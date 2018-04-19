@@ -13,7 +13,7 @@ window.onclick = function(event) {
  }
 }
 
-function removeOperator1(i) {
+function removeOperator(i) {
 	
 	  var xhttp = new XMLHttpRequest();
 	  xhttp.onreadystatechange = function() {
@@ -113,3 +113,62 @@ function editOperator(id,name,branch,phone,email)
 	  alert("data changed");
 }*/
 }
+function userExists()
+{
+	$(document).ready(function(){
+		$("#uname").blur(function(){
+			var username=$("#uname").val();
+			$.ajax({
+				url:"admin_Operator_userexists.jsp",
+				data:{uname :username},
+				success:function(data,status,xhr){
+				if(data == "User already Exists")	
+					{
+					
+					//$("#Invalid").html(data);
+					
+					}
+				else
+					{
+					$("#Invalid").html(data);
+					$("#Invalid").css("color","red");
+					}
+					//alert(data);
+				}
+				
+				
+			})
+		})
+	})	
+}
+
+function addOperator()
+{	var form=document.getElementById('addOp');
+	//alert("hi");
+	document.getElementById('id01').style.display='block';
+	$(document).ready(function(){
+		$("#addOperator").on("click",function(event){
+			event.preventDefault();
+			var uname=document.getElementById('uname').value;
+			var name=document.getElementById('name').value;
+			var uphone=document.getElementById('uphone').value;
+			var uemail=document.getElementById('uemail').value;
+			document.getElementById('id01').style.display='none';
+			//alert(uname+" "+name+" "+uphone+" "+uemail);
+			$.ajax({
+	            url: "admin_Operator_addOperator.jsp",
+	            type: "POST",
+	            data: { uname: uname, name: name, uphone : uphone, uemail : uemail},                   
+	            success: function(data,status,xhr)
+	                        {	$("#allOps1").html(data);
+	                        //alert("status:"+status);
+	                         //alert(data); 
+	                            
+	                        }
+		})
+	})
+})
+}
+
+
+
