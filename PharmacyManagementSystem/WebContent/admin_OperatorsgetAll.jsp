@@ -46,7 +46,7 @@
 		   onclick="editOperator('<%=re[i].getOperatorId()%>', '<%=re[i].getOperatorName()%>', '<%=re[i].getOperatorBranch()%>','<%=re[i].getOperatorPhone()%>', '<%=re[i].getOperatorEmail()%>')">
 		 		   <span class="glyphicon glyphicon-pencil" ></span></button>
 		    <button type="button" name="<%=re[i].getOperatorId()%>" class="btn btn-default btn-xs" style="color : red;border : none;padding : 0;background : none;"
-		   onclick="removeOperator1(<%=re[i].getOperatorId()%>)">
+		   onclick="removeOperator(<%=re[i].getOperatorId()%>)">
 		   <span class="glyphicon glyphicon-remove-sign"></span></button></td> </tr>
 		   <% 
 		 }
