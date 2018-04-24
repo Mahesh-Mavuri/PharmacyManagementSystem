@@ -26,11 +26,11 @@ public class Login implements ILogin{
 			String sqlQuery;
 			if(role)
 			{//role is true for admin
-				sqlQuery="select admin_name,admin_password from admin where admin_username=? and admin_password=?";
+				sqlQuery="select admin_name,admin_password from pharma_master.admin where admin_username=? and admin_password=?";
 			}
 			else
 			{
-				sqlQuery="select operator_name,operator_password from operator where operator_username=? and operator_password=?";
+				sqlQuery="select operator_name,operator_password from pharma_master.operator where operator_username=? and operator_password=?";
 			}
 			PreparedStatement pstmt = con.prepareStatement(sqlQuery);
 			pstmt.setString(1,userName);

@@ -23,7 +23,7 @@ function removeOperator(i) {
 	      console.log(this.responseText);
 	    }
 	  };
-	  xhttp.open("GET", "admin_OperatorsgetAll.jsp?row="+i, true);
+	  xhttp.open("GET", "admin_Operators_removeOperator.jsp?row="+i, true);
 	  xhttp.send();
 	}
 function editOperator(id,name,branch,phone,email)
@@ -116,21 +116,22 @@ function editOperator(id,name,branch,phone,email)
 function userExists()
 {
 	$(document).ready(function(){
+		var username=$("#uname").val();
 		$("#uname").blur(function(){
-			var username=$("#uname").val();
+		
 			$.ajax({
 				url:"admin_Operator_userexists.jsp",
 				data:{uname :username},
 				success:function(data,status,xhr){
-				if(data == "User already Exists")	
+				if(data == "some wrong text")	
 					{
 					
-					//$("#Invalid").html(data);
 					
 					}
 				else
 					{
 					$("#Invalid").html(data);
+					
 					$("#Invalid").css("color","red");
 					}
 					//alert(data);
@@ -146,28 +147,34 @@ function addOperator()
 {	
 	//alert("hi");
 	document.getElementById('id01').style.display='block';
+	$('#uname').val("");
+	$('#name').val("");
+	$('#uphone').val("");
+	$('#uemail').val("");
 	$(document).ready(function(){
 		$("#addOperator").on("click",function(event){
 			event.preventDefault();
-			var uname=document.getElementById('uname').value;
-			var name=document.getElementById('name').value;
-			var uphone=document.getElementById('uphone').value;
-			var uemail=document.getElementById('uemail').value;
-			document.getElementById('id01').style.display='none';
-			//alert(uname+" "+name+" "+uphone+" "+uemail);
-			$.ajax({
-	            url: "admin_Operator_addOperator.jsp",
-	            type: "POST",
-	            data: { uname: uname, name: name, uphone : uphone, uemail : uemail},                   
-	            success: function(data,status,xhr)
-	                        {	$("#allOps1").html(data);
-	                        //alert("status:"+status);
-	                         //alert(data); 
-	                            
-	                        }
+			
+				var uname=document.getElementById('uname').value;
+				var name=document.getElementById('name').value;
+				var uphone=document.getElementById('uphone').value;
+				var uemail=document.getElementById('uemail').value;
+				document.getElementById('id01').style.display='none';
+				//alert(uname+" "+name+" "+uphone+" "+uemail);
+				$.ajax({
+					url: "admin_Operator_addOperator.jsp",
+					type: "POST",
+					data: { uname: uname, name: name, uphone : uphone, uemail : uemail},                   
+					success: function(data,status,xhr)
+					{	$("#allOps1").html(data);
+					//alert("status:"+status);
+					//alert(data); 
+
+					}
+				})
+			
 		})
 	})
-})
 }
 
 

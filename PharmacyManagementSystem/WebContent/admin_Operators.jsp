@@ -124,8 +124,7 @@ if((session.getAttribute("name"))==null)
 		   onclick="removeOperator(<%=re[i].getOperatorId()%>)">
 		 		   <span class="glyphicon glyphicon-remove-sign" ></span></button>
 		 		   </td> </tr>
-		 		   
-		   <% 
+		 	  <% 
 		 }
 		
 		}
