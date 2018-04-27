@@ -25,6 +25,7 @@
 		String uemail= request.getParameter("uemail");
 		System.out.println(" "+uname+" "+name+" "+uphone+" "+uemail);
 		update = ty.addOperator(uname, name, uphone, uemail);
+		System.out.println(update);
 		OperatorPOJO[] re = ty.getAllOperators();
 		int k=1;
 		for(int i=0;i< re.length ;i++)

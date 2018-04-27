@@ -2,6 +2,7 @@ package com.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.dbutils.ConnectDB;
@@ -59,21 +60,25 @@ public class OperatorPOJO {
 	public void setOperatorName(String operatorName) {
 		this.operatorName = operatorName;
 	}
-	/*public void setOperatorName(String operatorName,int id) throws SQLException {
+	public String getOperatorUserNamewithId(int id) throws SQLException {
+		String name = "";
 		try(Connection con = ConnectDB.getConnection())
 		{
 			System.out.println("connected");
-			String sqlQuery="UPDATE operator SET operator_name=? WHERE operator_id=?";
-			PreparedStatement pstmt = con.prepareStatement(sqlQuery);
 			
-			pstmt.setString(1,operatorName);
-			pstmt.setInt(2,id);
-			int updated = pstmt.executeUpdate();
-			System.out.println("rows affected on"+updated);
-			this.operatorName = operatorName;
+			String sqlQuery="SELECT operator_username from pharma_master.operator WHERE operator_id=?";
+			PreparedStatement pstmt = con.prepareStatement(sqlQuery);
+			pstmt.setInt(1,id);
+			ResultSet Name = pstmt.executeQuery();
+			if(Name.next())
+			{
+				 name = Name.getString(1);
+			}
+			
 		}
+		return name;
 		
-	}*/
+	}
 	public String getOperatorDoj() {
 		return operatorDoj;
 	}

@@ -26,13 +26,16 @@
 		String ophone= request.getParameter("ophone");
 		String oemail= request.getParameter("oemail");
 		String oid=request.getParameter("row");
-		System.out.println("Hello "+oname+" "+obranch+" "+ophone+" "+oemail);
-		int j = Integer.parseInt(request.getParameter("row"))-1;
+		System.out.println("Hello "+oname+" "+obranch+" "+ophone+" "+oemail+" "+oid);
+		int j = Integer.parseInt(request.getParameter("row"));
+		OperatorPOJO re1 = new OperatorPOJO();
+		String cUname = re1.getOperatorUserNamewithId(j);
+		System.out.println(cUname);
 		for(int i=0;i< re.length ;i++)
 		{
 			if(re[i].getOperatorStatus().equals("1"))
 		{
-				if(i==j)
+				if(re[i].getOperatorUsername().equals(cUname))
 				{
 					/* re[i].setOperatorName(oname,Integer.parseInt(re[i].getOperatorId()));
 					re[i].setOperatorBranch(obranch,Integer.parseInt(re[i].getOperatorId()));

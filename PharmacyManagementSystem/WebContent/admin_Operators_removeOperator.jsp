@@ -22,12 +22,15 @@
 		AdminManageOperation ty = new AdminManageOperation();
 		OperatorPOJO[] re = ty.getAllOperators();
 		int k=1;
-		int j= Integer.parseInt(request.getParameter("row"))-1;
+		int j= Integer.parseInt(request.getParameter("row"));
+		OperatorPOJO re1 = new OperatorPOJO();
+		String cUname = re1.getOperatorUserNamewithId(j);
+		System.out.println(cUname);
 		for(int i=0;i< re.length ;i++)
 		{
 			if(re[i].getOperatorStatus().equals("1"))
 		{
-			if(i==j)
+			if(re[i].getOperatorUsername().equals(cUname))
 			{
 				re[i].setOperatorStatus("0",Integer.parseInt(re[i].getOperatorId()));
 				continue;
